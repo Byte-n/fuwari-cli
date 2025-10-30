@@ -6,6 +6,7 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
+import userConfig from './userConfig.json';
 
 export const siteConfig: SiteConfig = {
 	title: "Fuwari",
@@ -16,13 +17,13 @@ export const siteConfig: SiteConfig = {
 		fixed: false, // Hide the theme color picker for visitors
 	},
 	banner: {
-		enable: false,
-		src: "assets/images/demo-banner.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+		enable: true,
+		src: "assets/home-banner.webp", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
 		credit: {
-			enable: false, // Display the credit text of the banner image
-			text: "", // Credit text to be displayed
-			url: "", // (Optional) URL link to the original artwork or artist's page
+			enable: true, // Display the credit text of the banner image
+			text: "空色天絵 / NEO TOKYO NOIR 01", // Credit text to be displayed
+			url: "https://www.pixiv.net/artworks/111024784", // (Optional) URL link to the original artwork or artist's page
 		},
 	},
 	toc: {
@@ -88,3 +89,9 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	// Please select a dark theme, as this blog theme currently only supports dark background color
 	theme: "github-dark",
 };
+
+Object.assign(siteConfig, userConfig.site);
+Object.assign(navBarConfig, userConfig.navBar);
+Object.assign(profileConfig, userConfig.profile);
+Object.assign(licenseConfig, userConfig.license);
+Object.assign(expressiveCodeConfig, userConfig.expressive);
