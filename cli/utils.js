@@ -3,15 +3,20 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export function postsSymbolicLink () {
-    const { astroContentPostsDir, userPostsDir } = globalConfig.paths;
-    if (!fs.existsSync(userPostsDir)) {
-        console.log('博客目录不存在:', userPostsDir);
+    const { astroContentPostsDir, userPostsDir, astroContentSpecDir, userSpecDir } = globalConfig.paths;
+    symbolicLink(userPostsDir, astroContentPostsDir);
+    symbolicLink(userSpecDir, astroContentSpecDir);
+}
+
+function symbolicLink (source, target) {
+    if (!fs.existsSync(source)) {
+        console.log('博客目录不存在:', source);
         return;
     }
     // 已有文件/目录/软链，无论为何，都删掉
-    if (fs.existsSync(astroContentPostsDir)) {
+    if (fs.existsSync(target)) {
         try {
-            fs.rmSync(astroContentPostsDir, { recursive: true, force: true });
+            fs.rmSync(target, { recursive: true, force: true });
         } catch (err) {
             console.error('删除旧目录/链接失败:', err);
         }
@@ -20,9 +25,9 @@ export function postsSymbolicLink () {
     try {
         const isWindows = process.platform === 'win32';
         if (isWindows) {
-            fs.symlinkSync(userPostsDir, astroContentPostsDir, 'dir');
+            fs.symlinkSync(source, target, 'dir');
         } else {
-            fs.symlinkSync(userPostsDir, astroContentPostsDir);
+            fs.symlinkSync(source, target);
         }
     } catch (error) {
         console.error('创建软链接失败:', error);

@@ -9,12 +9,15 @@ const defaultConfig = {
         outDir: './dist',
         host: 'http://example.com',
         postsDir: './posts',
+        specDir: './spec',
         base: '/',
     },
     paths: {
         userPostsDir: '',
+        userSpecDir: '',
         root: path.resolve(__dirname, '../'),
         astroContentPostsDir: path.resolve(__dirname, '../src/content/posts'),
+        astroContentSpecDir: path.resolve(__dirname, '../src/content/spec'),
         astroOutDir: '',
         userRoot: '',
         userConfig: path.resolve(__dirname, '../src/userConfig.json'),
@@ -55,8 +58,9 @@ export async function initConfig () {
     }
 
     const userPostsDir = path.resolve(userRoot, globalConfig.astroConfig.postsDir);
+    const userSpecDir = path.resolve(userRoot, globalConfig.astroConfig.specDir);
     const astroOutDir = path.resolve(userRoot, globalConfig.astroConfig.outDir);
-    Object.assign(globalConfig.paths, { userPostsDir, astroOutDir, userRoot });
+    Object.assign(globalConfig.paths, { userPostsDir, userSpecDir, astroOutDir, userRoot });
     return globalConfig;
 }
 
