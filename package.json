@@ -1,5 +1,5 @@
 {
-    "name": "fuwari",
+    "name": "@byte.n/fuwari",
     "type": "module",
     "version": "0.0.1",
     "bin": {
