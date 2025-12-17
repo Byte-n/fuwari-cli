@@ -25,8 +25,8 @@ export default async () => {
                 watch: {
                     ignored: [
                         '**/node_modules/**',
-                        '!**/node_modules/fuwari/src/**',
-                        '!**/node_modules/fuwari/.astro/**',
+                        '!**/node_modules/@byte.n/fuwari/src/**',
+                        '!**/node_modules/@byte.n/fuwari/.astro/**',
                     ],
                     followSymlinks: true,
                 },
