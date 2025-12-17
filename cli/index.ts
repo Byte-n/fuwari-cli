@@ -5,6 +5,7 @@ interface Config {
     outDir?: string;
     host?: string;
     postsDir?: string;
+    base?: string;
   };
   theme?: {
     site: SiteConfig;

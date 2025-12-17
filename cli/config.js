@@ -9,6 +9,7 @@ const defaultConfig = {
         outDir: './dist',
         host: 'http://example.com',
         postsDir: './posts',
+        base: '/',
     },
     paths: {
         userPostsDir: '',

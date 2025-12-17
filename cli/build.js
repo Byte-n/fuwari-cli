@@ -11,6 +11,7 @@ export default async () => {
     return await build({
         host: globalConfig.astroConfig.host,
         outDir: globalConfig.paths.astroOutDir,
+        base: globalConfig.astroConfig.base,
         root: root,
         configFile: './astro.config.mjs',
         vite: {
