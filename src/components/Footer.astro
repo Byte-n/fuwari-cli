@@ -1,6 +1,6 @@
 ---
 
-import { profileConfig } from "../config";
+import { profileConfig, siteConfig } from "../config";
 import { url } from "../utils/url-utils";
 
 const currentYear = new Date().getFullYear();
@@ -17,5 +17,13 @@ const currentYear = new Date().getFullYear();
         Powered by
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
+        {
+            siteConfig.icp?.id ? (
+                <span>
+                    <br>
+                    <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={siteConfig.icp.href ?? 'https://beian.miit.gov.cn/'}>{siteConfig.icp.id}</a>
+                </span>
+            ) : null
+        }
     </div>
 </div>

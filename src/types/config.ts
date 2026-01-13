@@ -36,6 +36,11 @@ export type SiteConfig = {
 	};
 
 	favicon: Favicon[];
+
+    icp?: {
+        id?: string;
+        href?: string;
+    };
 };
 
 export type Favicon = {
